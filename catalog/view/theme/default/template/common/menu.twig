@@ -1,0 +1,16 @@
+{% if categories %}
+        <nav>
+            <div class="icon-menu">
+              <div class="sw-topper"></div>
+                <div class="sw-bottom"></div>
+                <div class="sw-footer"></div>
+            </div>
+          <div class="nav_block">
+              <ul>
+                {% for category in categories %}
+                  <li><a class="fadeInUp animated" href="{{ category.href }}"><i></i>{{ category.name }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+        </nav>
+{% endif %}

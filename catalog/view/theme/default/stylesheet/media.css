@@ -1,0 +1,358 @@
+@media (min-width: 280px) and (max-width: 1225px) {
+	.nav_block {
+		position:fixed;
+		max-width:none;
+		width:100%;
+		height:100%;
+		background-color:rgba(0, 0, 0, 0.85);
+		z-index:50;
+		left:0;
+		top:0;
+		display:none; 
+	}
+	.nav_block.active,
+	.icon-menu {
+		display:block;
+	}
+	.nav_block ul {
+		position:absolute;
+		width:100%;
+		top:50%;
+    	text-align:center;
+    	-webkit-animation-duration:0.01s;
+    	animation-duration:0.01s;
+		margin-top:-125px;
+		float:none; 
+	}
+	.nav_block ul li {
+		width:100%;
+		margin:0;
+		padding:5px 0;
+		display:block;
+	}
+	.nav_block ul li i {
+		display:none;
+	}
+	.nav_block ul li a {
+		line-height:30px;
+	}
+    .nav_block ul li:nth-child(1) a {
+     	-webkit-animation-delay:0;
+      	animation-delay:0; 
+	}
+    .nav_block ul li:nth-child(2) a {
+     	-webkit-animation-delay:0.1s;
+      	animation-delay:0.1s; 
+	}
+    .nav_block ul li:nth-child(3) a {
+      	-webkit-animation-delay:0.2s;
+      	animation-delay:0.2s; 
+	}
+    .nav_block ul li:nth-child(4) a {
+      	-webkit-animation-delay:0.3s;
+      	animation-delay:0.3s; 
+	}
+	.nav_block ul li:nth-child(5) a {
+      	-webkit-animation-delay:0.4s;
+      	animation-delay:0.4s; 
+	}
+	.nav_block ul li:nth-child(6) a {
+      	-webkit-animation-delay:0.5s;
+      	animation-delay:0.5s; 
+	}
+    .nav_block ul a:hover {
+        background-color:rgba(255, 255, 255, 0.08);
+		text-decoration:none; 
+	}
+}
+@media (min-width: 280px) and (max-width: 1180px) {
+	.main_title {
+		max-width:none;
+		width:73%;
+	}
+	.main_title h1 {
+		font-size:4.4vw;
+	}
+}
+@media (min-width: 280px) and (max-width: 1115px) {
+	.advantages,
+	.main_catalog ul {
+		display:block;
+	}
+	.advantages li,
+	.main_catalog ul li {
+		margin:0 10px 20px;
+	}
+	.feedback .row_flex,
+	.buyers_data form > .row_flex {
+		display:block;
+	}
+	.feedback .row_flex div,
+	.buyers_data .col {
+		max-width:none;
+	}
+	.feedback .input {
+		margin-bottom:15px;
+	}
+	.buyers_data .col div {
+		width:45%;
+	}
+}
+@media (min-width: 280px) and (max-width: 1100px) {
+	.delivery_method ul {
+		display:block;
+	}
+	.delivery_method ul li {
+		margin:0 10px 20px;
+	}
+}
+@media (min-width: 280px) and (max-width: 1060px) {
+	header {
+		text-align:center;
+		display:block;
+	}
+	.search {
+		margin:0 auto 10px;
+		padding-top:10px;
+	}
+	.phone {
+		padding:0;
+	}
+	.how_buy {
+		background-size:cover;
+	}	
+	.contacts .contact {
+		max-width:none;
+	}
+}
+@media (min-width: 280px) and (max-width: 1024px) {
+	.card_product > .row_flex {
+		display:block;
+	}
+	.slider_container {
+		max-width:600px;
+		width:100%;
+		margin:0 auto 10px;
+	}
+	.des_product {
+		max-width:430px;
+		width:100%;
+		margin:0 auto;
+	}
+}
+@media (min-width: 280px) and (max-width: 950px) {
+	.basket ul li {
+		font-size:0;
+		text-align:center;
+		padding:16px 10px;
+		display:block;
+	}
+	.basket ul li h4,
+	.basket ul li span,
+	.basket ul li strong,
+	.basket ul li > a {
+		margin:0 10px 10px;
+		vertical-align:middle;
+		display:inline-block;
+	}
+	.payment_methods ul {
+		display:block;
+	}
+	.payment_methods ul li {
+		margin:0 10px 10px;
+	}
+	.box {
+		padding:20px 10px;
+	}
+}
+@media (min-width: 280px) and (max-width: 900px) {
+	.tabs li {
+		width:100%;
+		margin:0 0 5px;
+		display:block;
+	}
+	.characteristics_box li {
+		margin:0 auto 10px;
+	}
+}
+@media (min-width: 280px) and (max-width: 768px) {
+	.bg_title .row_flex,
+	.main_title .row_flex,
+	.reviews_video > .row_flex,
+	.main_text.row_flex,
+	footer .item .row_flex,
+	.catalog_wrapp.row_flex {
+		display:block;
+	}
+	.sidebar_wrapp {
+		width:100%;
+		margin-bottom:20px;
+	}
+	.sidebar {
+		width:100%;
+	}
+	.main_title {
+		display:none;
+	}
+	.reviews,
+	.video,
+	.main_text .img,
+	.contact {
+		margin:0 auto;
+	}
+	.main_text .text {
+		margin:0 auto;
+	}
+	footer > .row_flex,
+	.contacts .row_flex,
+	.articles_detail .row_flex {
+		display:block;
+	}
+	footer .item {
+		max-width:none;
+		margin-bottom:10px;
+	}
+	.ask_question,
+	.des {
+		margin:0 auto;
+	}
+	footer,
+	.ask_question div {
+		text-align:center;
+	}
+	footer .logo_block,
+	.articles_detail .img {
+		margin:0 auto 20px;
+	}
+	.nav {
+		padding-bottom:20px;
+	}
+	.nav ul {
+		text-align:center;
+	}
+	footer .logo,
+	.social {
+		margin-bottom:20px;
+		padding:0;
+	}
+	.payment span {
+		text-align:center;
+		display:block;
+	}
+	.contacts .map {
+		max-width:none;
+	}
+	.contacts .contact {
+		width:295px;
+		margin:0 auto;
+	}
+	.contacts .mode {
+		margin-bottom:35px;
+	}
+	.row_feed {
+		display:block;
+	}
+	.text_feed {
+		margin:0 auto 10px;
+	}
+	.row_feed .address {
+		width:auto;
+		margin:0 auto;
+	}
+	.characteristics_box li {
+		width:90%;
+	}
+	.left_col {
+		margin:0 auto;
+	}
+	.right_col .bread_crumbs {
+		background:none;
+	}
+}
+@media (min-width: 280px) and (max-width: 670px) {
+	.basket_strip section {
+		display:block;
+	}
+	.basket_strip p {
+		padding:10px;
+	}
+}
+@media (min-width: 280px) and (max-width: 600px) {
+	h2 {
+		font-size:24px;
+	}
+	.top_row .row_flex,
+	.head {
+		text-align:center;
+		display:block;
+	}
+	.top_row ul li,
+	.nav ul li {
+		margin:0 10px;
+	}
+	.how_buy ul li,
+	.articles ul li,
+	.reviews_page ul li {
+		margin:0 0 15px;
+	}
+	.feedback {
+		margin-bottom:20px;
+		padding:20px;
+	}
+	.reviews_page ul li div {
+		padding:20px;
+	}
+	.reviews_page ul li h3 {
+		background-position:center top;
+		text-align:center;
+		padding:35px 0 0;
+	}
+	.basket_page {
+		padding:20px 10px;
+	}
+	.delivery_method ul li,
+	.payment_methods ul li {
+		margin:0 0 15px;
+	}
+	.basket,
+	.delivery_method,
+	.payment_methods {
+		padding-bottom:25px;
+	}
+	.basket ul li > a {
+		margin:0 auto;
+		display:block;
+	}
+	.card_product {
+		padding:20px;
+	}
+}
+@media (min-width: 280px) and (max-width: 450px) {
+	.des_product > ul {
+		padding-bottom:20px;
+	}
+	.row_buy.row_flex,
+	.list ul {
+		text-align:center;
+		display:block;
+	}
+	.row_buy.row_flex div {
+		margin-bottom:10px;
+	}
+	.color_slider {
+		padding:0;
+	}
+	.color_slider .item {
+		width:200px;
+	}
+	.list ul li {
+		text-align:left;
+		margin:0 5px 10px;
+	}
+	.video_reviews ul {
+		padding:0 15px;
+	}
+	.video_reviews ul li {
+		margin:0 0 15px;
+	}
+}

@@ -1,0 +1,69 @@
+        <footer>
+          <section class="row_flex">
+              <div class="item">
+                  <div class="nav">
+                      <ul>
+                        <li><a href="{{ home }}">Главная</a></li>
+                        <li><a href="{{ delivery_href }}">{{ delivery_title }}</a></li>
+                        <li><a href="{{ repair_href }}">{{ repair_title }}</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="row_flex">
+                      <div class="logo_block">
+                          <a class="logo" title="{{ name }}" href="{{ home }}"></a>
+                            <ul class="social">
+                              <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                            </ul>
+                            <div class="payment">
+                              <span>Способы оплаты:</span>
+                                <ul>
+                                  <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="contact">
+                          <div class="address">{{ address }}</div>
+                            <div class="mode">Режим работы: <span>{{ open }}</span></div>
+                            <div class="phone">
+                              <a href="{{ contact }}">{{ telephone }}</a>
+                        <div><a class="popup" href="#call_back">Обратный звонок</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ask_question">
+                  <h2>Задать вопрос</h2>
+                    <form>
+                      <input class="input" type="text" placeholder="Имя">
+                        <input class="input" type="tel" placeholder="Телефон">
+                        <textarea></textarea>
+                        <div><input class="submit" type="submit" value="Отправить"></div>
+                    </form>
+                </div>
+            </section>
+        </footer>
+        <div id="gotop"></div>
+        <div id="call_back" class="call_back">
+          <h3>Заказать звонок</h3>
+            <form>
+                <input type="text" placeholder="Ваше имя" required>
+              <input type="tel" placeholder="Ваш телефон" required>
+                <input type="submit" value="Заказать">
+            </form>
+        </div>
+<script type="text/javascript" src="catalog/view/javascript/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/js/main-slider.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/js/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/js/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/js/scripts.js"></script>
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+</body></html>

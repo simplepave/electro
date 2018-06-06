@@ -1,0 +1,70 @@
+<div class="bg_title">
+	<section>
+{% if categories %}
+    	<div class="row_flex coin_slider">
+        	<div class="sidebar_wrapp">
+                <div class="sidebar">
+                    <ul id="tabs-hover">
+{% for category in categories %}
+<li id="coinsl{{ category.id }}"><a class="{{ category.key ? 'hover' : '' }}" data-target="item-{{ category.id }}" href="{{ category.href }}"><i></i>{{ category.name }}</a></li>
+{% endfor %}
+                    </ul>
+                    {% if dop_categories %}
+                    {% for dop_category in dop_categories %}
+                    <a href="{{ dop_category.href }}">{{ dop_category.name }}</a>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="main_title hide-blocks">
+{% for category in categories %}
+            	<div id="item-{{ category.id }}" class="item collapse{{ category.key ? ' in' : '' }}">
+                    <div class="row_flex">
+                    	<div class="head_slider"><h1>{{ category.name }}</h1></div>
+                        <div class="text">
+                            {{ category.description }}
+                            <a href="{{ category.href }}">Подробнее</a>
+                        </div>
+                        <div class="img"><img src="{{ category.image }}" alt=""></div>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+{% endif %}
+        <ul class="advantages">
+        	<li>
+            	<a href="{{ dostavka_href }}">
+                	<div class="icon"></div>
+                    <div class="text">
+                    	<p>{{ dostavka_title }}</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+            	<a href="{{ garantiya_href }}">
+                	<div class="icon"></div>
+                    <div class="text">
+                    	<p>{{ garantiya_title }}</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+            	<a href="{{ drajv_href }}">
+                	<div class="icon"></div>
+                    <div class="text">
+                    	<p>{{ drajv_title }}</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+            	<a href="{{ remont_href }}">
+                	<div class="icon"></div>
+                    <div class="text">
+                    	<p>{{ remont_title }}</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html dir="{{ direction }}" lang="{{ lang }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{ title }}</title>
+    <base href="{{ base }}">
+{% if description %}
+    <meta name="description" content="{{ description }}">
+{% endif %}
+{% if keywords %}
+    <meta name="keywords" content="{{ keywords }}">
+{% endif %}
+    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/styles.css">
+    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/magnific-popup.css">
+    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/animate.min.css">
+    <link rel="stylesheet" href="catalog/view/theme/default/stylesheet/media.css">
+    <script type="text/javascript" src="catalog/view/javascript/js/jquery-2.0.3.min.js"></script>
+{% for style in styles %}
+    <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+    <script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+{% for link in links %}
+    <link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+</head>
+<body>
+        <div class="top_row">
+            <section class="row_flex">
+                <ul>
+                    <li><a href="{{ delivery_href }}">{{ delivery_title }}</a></li>
+                    <li><a href="{{ repair_href }}">{{ repair_title }}</a></li>
+                    <li><a href="#">Отзывы</a></li>
+                    <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                </ul>
+                <div><a href="{{ shopping_cart }}">{{ text_shopping_cart }}</a></div>
+            </section>
+        </div>
+        <header>
+            <a class="logo" title="{{ name }}" href="{{ home }}"></a>
+            {{ search }}
+            <div class="phone">
+                <a href="{{ contact }}">{{ telephone }}</a>
+                <div><a class="popup" href="#call_back">Обратный звонок</a></div>
+            </div>
+        </header>
+{{ menu }}
