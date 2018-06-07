@@ -1,6 +1,24 @@
 <?php
 class ControllerExtensionModuleFeatured extends Controller {
 	public function index($setting) {
+
+		$name = explode('.', $setting['name']);
+		$data['category'] = false;
+
+		if(isset($name[1], $name[2]) && is_numeric($name[2]) && $name[1] === 'category_id')
+		{
+			$category_id = (int)$name[2];
+
+			$this->load->model('catalog/category');
+			$category = $this->model_catalog_category->getCategory($category_id);
+
+			if($category)
+				$data['category'] = [
+					'name' => $category['name'],
+					'href' => $this->url->link('product/category', 'path=' . $category['category_id']),
+				];
+		}
+
 		$this->load->language('extension/module/featured');
 
 		$this->load->model('catalog/product');
@@ -20,6 +38,13 @@ class ControllerExtensionModuleFeatured extends Controller {
 				$product_info = $this->model_catalog_product->getProduct($product_id);
 
 				if ($product_info) {
+					$product_attribute = $this->model_catalog_product->getProductAttributes($product_id);
+
+					if($product_attribute)
+						$attribute = $product_attribute;
+					else
+						$attribute = false;
+
 					if ($product_info['image']) {
 						$image = $this->model_tool_image->resize($product_info['image'], $setting['width'], $setting['height']);
 					} else {
@@ -34,8 +59,10 @@ class ControllerExtensionModuleFeatured extends Controller {
 
 					if ((float)$product_info['special']) {
 						$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						$discount = $product_info['price'] * (1.0 - (float)$product_info['special']/100.0);
 					} else {
 						$special = false;
+						$discount = false;
 					}
 
 					if ($this->config->get('config_tax')) {
@@ -57,6 +84,8 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'description' => utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 						'price'       => $price,
 						'special'     => $special,
+						'discount'	  => $discount,
+						'attribute'   => $attribute,
 						'tax'         => $tax,
 						'rating'      => $rating,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])

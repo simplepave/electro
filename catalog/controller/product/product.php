@@ -218,12 +218,20 @@ class ControllerProductProduct extends Controller {
 			$this->document->setDescription($product_info['meta_description']);
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
-			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
-			$this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-			$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
+
+			// $this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
+			// $this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
+			// $this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+			// $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
+
+			$this->document->addStyle('catalog/view/theme/default/stylesheet/flexslider.css');
+			$this->document->addStyle('catalog/view/theme/default/stylesheet/owl.carousel.css');
+
+			$this->document->addScript('catalog/view/javascript/js/jquery.flexslider.js','footer');
+			$this->document->addScript('catalog/view/javascript/js/owl.carousel.min.js','footer');
+			$this->document->addScript('catalog/view/javascript/js/slider-product.js','footer');
 
 			$data['heading_title'] = $product_info['name'];
 
@@ -235,6 +243,7 @@ class ControllerProductProduct extends Controller {
 			$data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
 
 			$data['product_id'] = (int)$this->request->get['product_id'];
+			$data['product_name'] = $product_info['name'];
 			$data['manufacturer'] = $product_info['manufacturer'];
 			$data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
 			$data['model'] = $product_info['model'];
@@ -283,8 +292,10 @@ class ControllerProductProduct extends Controller {
 
 			if ((float)$product_info['special']) {
 				$data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				$data['discount'] = $product_info['price'] * (1.0 - (float)$product_info['special']/100.0);
 			} else {
 				$data['special'] = false;
+				$data['discount'] = false;
 			}
 
 			if ($this->config->get('config_tax')) {
@@ -438,7 +449,7 @@ class ControllerProductProduct extends Controller {
 			$data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
 
 			$this->model_catalog_product->updateViewed($this->request->get['product_id']);
-			
+
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
@@ -622,7 +633,7 @@ class ControllerProductProduct extends Controller {
 		}
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
-		
+
 		$recurring_info = $this->model_catalog_product->getProfile($product_id, $recurring_id);
 
 		$json = array();
