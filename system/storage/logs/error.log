@@ -41,3 +41,16 @@
 2018-06-07 14:31:11 - PHP Notice:  Undefined variable: data in W:\domains\electro.os\catalog\controller\extension\module\featured.php on line 26
 2018-06-07 14:32:45 - PHP Notice:  Undefined index: name in W:\domains\electro.os\catalog\controller\extension\module\featured.php on line 18
 2018-06-07 14:32:45 - PHP Notice:  Undefined index: category_id in W:\domains\electro.os\catalog\controller\extension\module\featured.php on line 19
+2018-06-08 12:52:40 - PHP Notice:  Undefined variable: content in W:\domains\electro.os\catalog\controller\product\product.php on line 259
+2018-06-08 18:45:37 - PHP Warning:  trim() expects parameter 1 to be string, array given in W:\domains\electro.os\catalog\controller\extension\module\carousel.php on line 47
+2018-06-08 18:47:16 - PHP Warning:  trim() expects parameter 1 to be string, array given in W:\domains\electro.os\catalog\controller\extension\module\carousel.php on line 48
+2018-06-08 18:47:16 - PHP Warning:  trim() expects parameter 1 to be string, array given in W:\domains\electro.os\catalog\controller\extension\module\carousel.php on line 48
+2018-06-08 18:59:17 - PHP Notice:  Undefined variable: request_uri in W:\domains\electro.os\catalog\controller\extension\module\carousel.php on line 52
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64
+2018-06-08 19:15:26 - PHP Notice:  Array to string conversion in W:\domains\electro.os\system\library\template\Twig\Environment.php(403) : eval()'d code on line 64

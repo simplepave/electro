@@ -13,6 +13,8 @@ class ControllerCommonFooter extends Controller {
 		$data['repair_title'] = $res['title'];
 		$data['repair_href'] = $this->url->link('information/information', 'information_id=' . $res['information_id']);
 
+		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
+
 		// $data['informations'] = array();
 
 		// foreach ($this->model_catalog_information->getInformations() as $result) {

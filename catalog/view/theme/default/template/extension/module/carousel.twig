@@ -1,24 +1,27 @@
-<div class="swiper-viewport">
-  <div id="carousel{{ module }}" class="swiper-container">
-    <div class="swiper-wrapper">{% for banner in banners %}
-      <div class="swiper-slide text-center">{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />{% endif %}</div>
-      {% endfor %}</div>
-  </div>
-  <div class="swiper-pagination carousel{{ module }}"></div>
-  <div class="swiper-pager">
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+<div class="color_block">
+  {% if name %}
+  <h2>{{ name }}</h2>
+  {% endif %}
+  <div class="color_slider owl-carousel">
+    {% for banner in banners %}
+    <div class="item">
+      {% if banner.link and not banner.is_item %}
+      <a href="{{ banner.link }}">
+      {% endif %}
+        <div class="img"><img src="{{ banner.image }}" alt="{{ banner.title }}"></div>
+        <div class="check">
+          {% if banner.is_item %}
+          <input type="checkbox" id="c{{ banner.id }}" name="cc" checked="checked" />
+          <label for="c{{ banner.id }}"><span></span>{{ banner.title }}</label>
+          {% else %}
+          <input type="checkbox" id="c{{ banner.id }}" name="cc"/>
+          <label for="c{{ banner.id }}"><span></span>{{ banner.title }}</label>
+          {% endif %}
+        </div>
+      {% if banner.link and not banner.is_item %}
+      </a>
+      {% endif %}
+    </div>
+    {% endfor %}
   </div>
 </div>
-<script type="text/javascript"><!--
-$('#carousel{{ module }}').swiper({
-	mode: 'horizontal',
-	slidesPerView: 5,
-	pagination: '.carousel{{ module }}',
-	paginationClickable: true,
-	nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-	autoplay: 2500,
-	loop: true
-});
---></script>

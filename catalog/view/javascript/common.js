@@ -138,12 +138,12 @@ $(document).ready(function() {
 	});
 
 	// tooltips on hover
-	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	// $('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
 
 	// Makes tooltips work on ajax generated content
-	$(document).ajaxStop(function() {
-		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
-	});
+	// $(document).ajaxStop(function() {
+	// 	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	// });
 });
 
 // close dismiss
@@ -173,14 +173,17 @@ var cart = {
 				}
 
 				if (json['success']) {
-					$('body').prepend('<div class="alert alert-success alert-dismissible"> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					// $('body').prepend('<div class="alert alert-success alert-dismissible"> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 					// Need to set timeout otherwise it wont update the total
-					// setTimeout(function () {
-					// 	$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-					// }, 100);
+					setTimeout(function () {
+						$('#products-in-cart').html(json['count']);
+				      $('#cart-total').html(json['total']);
+				      $('.basket_wrapp').css({'bottom' : '0'});
+						// $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+					}, 100);
 
-					$('html, body').animate({ scrollTop: 0 }, 'slow');
+					// $('html, body').animate({ scrollTop: 0 }, 'slow');
 
 					// $('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}

@@ -249,7 +249,19 @@ class ControllerProductProduct extends Controller {
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
-			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+
+			$description = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+
+			if (preg_match( '/<!--video(.*?)?-->/', $description, $matches)) {
+				$description_arr = explode($matches[0], $description, 2);
+
+				$data['description'] = $description_arr[0];
+				$data['description_video'] = $description_arr[1];
+			}
+			else {
+				$data['description'] = $description;
+				$data['description_video'] = false;
+			}
 
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
@@ -332,7 +344,7 @@ class ControllerProductProduct extends Controller {
 							'product_option_value_id' => $option_value['product_option_value_id'],
 							'option_value_id'         => $option_value['option_value_id'],
 							'name'                    => $option_value['name'],
-							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+							'image'                   => $this->model_tool_image->resize($option_value['image'], 68, 47),
 							'price'                   => $price,
 							'price_prefix'            => $option_value['price_prefix']
 						);
@@ -456,6 +468,8 @@ class ControllerProductProduct extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
+			$data['advantages'] = $this->load->controller('information/advantages');
 
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
