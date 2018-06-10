@@ -5,6 +5,8 @@ class ControllerInformationContact extends Controller {
 	public function index() {
 		$this->load->language('information/contact');
 
+		$data['entry_telephone'] = $this->language->get('entry_telephone');
+
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -21,7 +23,9 @@ class ControllerInformationContact extends Controller {
 			$mail->setReplyTo($this->request->post['email']);
 			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
+			$text = $data['entry_telephone'] . ': ' . $this->request->post['telephone'] . PHP_EOL . PHP_EOL;
+			$text .= $this->request->post['enquiry'];
+			$mail->setText($text);
 			$mail->send();
 
 			$this->response->redirect($this->url->link('information/contact/success'));
@@ -51,6 +55,12 @@ class ControllerInformationContact extends Controller {
 			$data['error_email'] = '';
 		}
 
+		if (isset($this->error['telephone'])) {
+			$data['error_telephone'] = $this->error['telephone'];
+		} else {
+			$data['error_telephone'] = '';
+		}
+
 		if (isset($this->error['enquiry'])) {
 			$data['error_enquiry'] = $this->error['enquiry'];
 		} else {
@@ -76,7 +86,15 @@ class ControllerInformationContact extends Controller {
 		$data['telephone'] = $this->config->get('config_telephone');
 		$data['fax'] = $this->config->get('config_fax');
 		$data['open'] = nl2br($this->config->get('config_open'));
-		$data['comment'] = $this->config->get('config_comment');
+		$data['comment'] = '';
+
+		$comments = explode(PHP_EOL, $this->config->get('config_comment'));
+
+		if($comments){
+			foreach ($comments as $comment) {
+				$data['comment'] .= '<p>' . $comment . '</p>';
+			}
+		}
 
 		$data['locations'] = array();
 
@@ -118,6 +136,12 @@ class ControllerInformationContact extends Controller {
 			$data['email'] = $this->customer->getEmail();
 		}
 
+		if (isset($this->request->post['telephone'])) {
+			$data['val_telephone'] = $this->request->post['telephone'];
+		} else {
+			$data['val_telephone'] = '';
+		}
+
 		if (isset($this->request->post['enquiry'])) {
 			$data['enquiry'] = $this->request->post['enquiry'];
 		} else {
@@ -148,6 +172,10 @@ class ControllerInformationContact extends Controller {
 
 		if (!filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
+		}
+
+		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			$this->error['telephone'] = $this->language->get('error_telephone');
 		}
 
 		if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {

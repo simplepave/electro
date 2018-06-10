@@ -227,10 +227,7 @@ class ControllerProductProduct extends Controller {
 			// $this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 			$this->document->addStyle('catalog/view/theme/default/stylesheet/flexslider.css');
-			$this->document->addStyle('catalog/view/theme/default/stylesheet/owl.carousel.css');
-
 			$this->document->addScript('catalog/view/javascript/js/jquery.flexslider.js','footer');
-			$this->document->addScript('catalog/view/javascript/js/owl.carousel.min.js','footer');
 			$this->document->addScript('catalog/view/javascript/js/slider-product.js','footer');
 
 			$data['heading_title'] = $product_info['name'];

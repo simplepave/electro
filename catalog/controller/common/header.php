@@ -14,6 +14,8 @@ class ControllerCommonHeader extends Controller {
 		$data['repair_title'] = $res['title'];
 		$data['repair_href'] = $this->url->link('information/information', 'information_id=' . $res['information_id']);
 
+		$data['articles_href'] = $this->url->link('newsblog/category', 'newsblog_path=1');
+
 		$data['analytics'] = array();
 
 		$analytics = $this->model_setting_extension->getExtensions('analytics');

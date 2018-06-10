@@ -1,10 +1,407 @@
 {{ header }}
-<div id="product-category" class="container">
-  <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-    {% endfor %}
-  </ul>
+<div class="container">
+    <section class="catalog_wrapp row_flex">
+      <div class="left_col">
+          <div class="filter">
+              <div class="wrapp">
+                  <div class="popular_models">
+                      <h3>Популярные модели</h3>
+                        <ul>
+                          <li><a href="#">Umka 4,5</a></li>
+                            <li><a href="#">Smart Wheel</a></li>
+                            <li><a href="#">Smart Wheel 6,5</a></li>
+                            <li><a href="#">Smart Premium</a></li>
+                            <li><a href="#">Брендовые</a></li>
+                            <li><a href="#">Kivano</a></li>
+                        </ul>
+                    </div>
+                    <div class="wheel_size">
+                      <h3>Размер колес</h3>
+                        <ul>
+                          <li><a href="#">6, 5 дюймов</a></li>
+                            <li><a href="#">8 дюймов</a></li>
+                            <li><a href="#">10 дюймов</a></li>
+                            <li><a href="#">10,5 дюймов</a></li>
+                        </ul>
+                    </div>
+                    <div class="manufacturer">
+                      <h3>Производитель</h3>
+                        <ul>
+                          <li><a href="#">Smart Balance</a></li>
+                            <li><a href="#">iBalance</a></li>
+                            <li><a href="#">Swagtron</a></li>
+                        </ul>
+                    </div>
+                    <div class="for_whom">
+                      <h3>Для кого</h3>
+                        <ul>
+                          <li><a href="#">Взрослый</a></li>
+                            <li><a href="#">Детские</a></li>
+                            <li><a href="#">Для мальчика</a></li>
+                            <li><a href="#">Для девочки</a></li>
+                        </ul>
+                    </div>
+                  <div class="slider_prise">
+                      <h3>Цена</h3>
+                      <input type="text" id="range" value="" name="range" />
+                    </div>
+                </div>
+            </div>
+            <div class="banner">
+              <div>
+                  <h4>Большой выбор</h4>
+                    <p>в нашем магазине</p>
+                </div>
+                <img src="images/content/img-banner.jpg" alt="">
+            </div>
+        </div>
+        <div class="right_col">
+          <div class="bread_crumbs">
+            <ul>
+              {% for breadcrumb in breadcrumbs %}
+              <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+              {% endfor %}
+              </ul>
+          </div>
+          <h2>{{ heading_title }}</h2>
+            <div class="main_catalog">
+              <ul>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-30%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img1.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img2.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-20%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img3.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img4.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-20%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img3.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img1.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-30%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img1.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img2.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-20%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img3.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img4.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="discount">-20%</div>
+                            <div class="img"><a href="#"><img src="images/georosculator/img3.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="wrapp">
+                            <div class="img"><a href="#"><img src="images/georosculator/img1.jpg" alt=""></a></div>
+                            <h3>Гироскутер  Smart Balance Wheel 6.5 розовый хром</h3>
+                            <div class="hiden_block">
+                                <p>Характеристики</p>
+                                <div class="dropp">
+                                    <div>
+                                        <p>Макс. скорость: 20 км/ч</p>
+                                        <p>Дальность хода: 25 км</p>
+                                        <p>Вес: 11 кг</p>
+                                        <p>Диаметр колёс: 6.5 Мощн- ость: 350W*2</p>
+                                        <p>Габариты: 584*186*178 мм</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prise row_flex">
+                                <div>
+                                    <strong>8 900 руб.</strong>
+                                    <s>13 900 руб</s>
+                                </div>
+                                <a href="#">Купить</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <a href="#">Загрузить еще</a>
+        </div>
+    </section>
+    <div class="video_reviews">
+      <h2>Видеобзоры</h2>
+        <ul>
+          <li>
+              <img src="images/video-reviews/img1.jpg" alt="">
+                <a href="#"></a>
+            </li>
+            <li>
+              <img src="images/video-reviews/img2.jpg" alt="">
+                <a href="#"></a>
+            </li>
+            <li>
+              <img src="images/video-reviews/img3.jpg" alt="">
+                <a href="#"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="catalog_text">
+      <h2>Электротранспорт</h2>
+        <p>Продажа электротранспорта позволяет сделать его доступным для каждого. Ведь такой транспорт обладает массой преимуществ. Он мобильнее и дешевле, нежели велосипеды и автомобили.</p>
+        <p>Одним из достоинств является несомненная экологичность, ведь вредные выбросы в атмосферу отсутствуют. Кроме того, электротранспорт отличается низким уровнем шума и минимальной взрыво- и пожаробезопасностью при столкновениях. Его отличает и высокая производительность.</p>
+    </div>
+</div>
+
+<!-- <div id="product-category" class="container">
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -14,7 +411,6 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h2>{{ heading_title }}</h2>
       {% if thumb or description %}
       <div class="row"> {% if thumb %}
         <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
@@ -64,31 +460,31 @@
           <div class="form-group input-group input-group-sm">
             <label class="input-group-addon" for="input-sort">{{ text_sort }}</label>
             <select id="input-sort" class="form-control" onchange="location = this.value;">
-              
-              
-              
+
+
+
               {% for sorts in sorts %}
               {% if sorts.value == '%s-%s'|format(sort, order) %}
-              
-              
-              
+
+
+
               <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
-              
-              
-              
+
+
+
               {% else %}
-              
-              
-              
+
+
+
               <option value="{{ sorts.href }}">{{ sorts.text }}</option>
-              
-              
-              
+
+
+
               {% endif %}
               {% endfor %}
-            
-            
-            
+
+
+
             </select>
           </div>
         </div>
@@ -96,31 +492,31 @@
           <div class="form-group input-group input-group-sm">
             <label class="input-group-addon" for="input-limit">{{ text_limit }}</label>
             <select id="input-limit" class="form-control" onchange="location = this.value;">
-              
-              
-              
+
+
+
               {% for limits in limits %}
               {% if limits.value == limit %}
-              
-              
-              
+
+
+
               <option value="{{ limits.href }}" selected="selected">{{ limits.text }}</option>
-              
-              
-              
+
+
+
               {% else %}
-              
-              
-              
+
+
+
               <option value="{{ limits.href }}">{{ limits.text }}</option>
-              
-              
-              
+
+
+
               {% endif %}
               {% endfor %}
-            
-            
-            
+
+
+
             </select>
           </div>
         </div>
@@ -166,5 +562,5 @@
       {% endif %}
       {{ content_bottom }}</div>
     {{ column_right }}</div>
-</div>
-{{ footer }} 
+</div> -->
+{{ footer }}

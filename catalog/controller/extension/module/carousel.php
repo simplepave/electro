@@ -13,6 +13,9 @@ class ControllerExtensionModuleCarousel extends Controller {
 		// $this->document->addStyle('catalog/view/javascript/jquery/swiper/css/opencart.css');
 		// $this->document->addScript('catalog/view/javascript/jquery/swiper/js/swiper.jquery.js');
 
+		$this->document->addStyle('catalog/view/theme/default/stylesheet/owl.carousel.css');
+		$this->document->addScript('catalog/view/javascript/js/owl.carousel.min.js','footer');
+
 		$data['banners'] = array();
 
 		$name = false;

@@ -371,10 +371,43 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+				$json['count'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
 		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	/**
+	 * In Cart
+	 */
+
+	public function in_cart()
+	{
+		$this->load->language('checkout/cart');
+		$this->load->model('setting/extension');
+		$total = 0;
+
+		if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+			$results = $this->model_setting_extension->getExtensions('total');
+
+			foreach ($results as $result) {
+				if ($this->config->get('total_' . $result['code'] . '_status')) {
+					$this->load->model('extension/total/' . $result['code']);
+
+					$this->{'model_extension_total_' . $result['code']}->getTotal(['total' => &$total]);
+				}
+			}
+		}
+
+		$json['total'] = sprintf($this->language->get('text_items'),
+			$this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0),
+			$this->currency->format($total, $this->session->data['currency']));
+
+		$json['count'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));

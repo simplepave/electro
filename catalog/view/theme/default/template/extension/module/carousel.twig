@@ -25,3 +25,21 @@
     {% endfor %}
   </div>
 </div>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+  var owl = $('.color_slider');
+
+  owl.owlCarousel({
+    margin:12,
+    nav: true,
+    loop: true,
+    smartSpeed:500,
+    responsive: {
+      0: {items: 1},
+      690: {items: 2},
+      935: {items: 3, margin:0},
+      1160: {items: 4}
+    }
+  });
+});
+--></script>

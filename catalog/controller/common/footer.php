@@ -15,6 +15,8 @@ class ControllerCommonFooter extends Controller {
 
 		$data['checkout'] = $this->url->link('checkout/checkout', '', true);
 
+		$data['articles_href'] = $this->url->link('newsblog/category', 'newsblog_path=1');
+
 		// $data['informations'] = array();
 
 		// foreach ($this->model_catalog_information->getInformations() as $result) {
