@@ -20,7 +20,7 @@ class ControllerCommonHomeMenu extends Controller {
 					'column'   => $category['column'] ? $category['column'] : 1,
 					'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
 					'image' => 'image/' . $category['image'],
-					'description' => htmlspecialchars_decode($category['description']),
+					'description' => htmlspecialchars_decode($category['comment']),
 				);
 			} else {
 				$data['dop_categories'][] = array(

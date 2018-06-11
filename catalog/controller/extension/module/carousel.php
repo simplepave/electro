@@ -3,8 +3,7 @@ class ControllerExtensionModuleCarousel extends Controller {
 	public function index($setting) {
 		static $module = 0;
 
-		$url = parse_url($_SERVER['REQUEST_URI']);
-		$this->request_uri = $url['path'] . '?' . $url['query'];
+		$this->_product_id = isset($this->request->get['product_id'])? $this->request->get['product_id']: false;
 
 		$this->load->model('design/banner');
 		$this->load->model('tool/image');
@@ -32,7 +31,7 @@ class ControllerExtensionModuleCarousel extends Controller {
 					'title' => $result['title'],
 					'link'  => $result['link'],
 					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']),
-					'is_item' => $this->is_item(html_entity_decode($result['link'], ENT_QUOTES, 'UTF-8')),
+					'is_item' => $this->is_item($result['link']),
 				);
 			}
 		}
@@ -46,9 +45,40 @@ class ControllerExtensionModuleCarousel extends Controller {
 
 	private function is_item($url)
 	{
-		$url = parse_url($url);
-      $request = $url['path'] . '?' . $url['query'];
+		if ($this->_product_id) {
+			$query = parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY);
 
-      return $request == $this->request_uri? true: false;
+			if ($query) {
+				parse_str($query, $data);
+				if (isset($data['product_id']))
+					return $this->_product_id == $data['product_id']? true: false;
+			}
+			else
+				return $this->_product_id == $this->decode_url($url)? true: false;
+		}
+
+      return false;
+	}
+
+	private function decode_url($url)
+	{
+		$path = parse_url($url, PHP_URL_PATH);
+		$parts = explode('/', $path);
+
+		if (utf8_strlen(end($parts)) == 0)
+			array_pop($parts);
+
+		foreach ($parts as $part) {
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
+
+			if ($query->num_rows) {
+				$url = explode('=', $query->row['query']);
+
+				if ($url[0] == 'product_id')
+					return $url[1];
+			}
+		}
+
+		return false;
 	}
 }

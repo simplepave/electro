@@ -279,6 +279,10 @@ class ControllerCatalogCategory extends Controller {
 		$this->response->setOutput($this->load->view('catalog/category_list', $data));
 	}
 
+	/**
+	 * Get Form
+	 */
+
 	protected function getForm() {
 		$data['text_form'] = !isset($this->request->get['category_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 

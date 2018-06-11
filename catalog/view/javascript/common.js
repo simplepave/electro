@@ -525,3 +525,41 @@ $(document).delegate('.agree', 'click', function(e) {
 		});
 	}
 })(window.jQuery);
+
+/**
+ * SP
+ */
+
+jQuery(document).ready(function($){
+
+	/**
+	 * More Product
+	 */
+
+	$('#more_product').click(function(e){
+		e.preventDefault();
+	   var t = $(this);
+	   var href = t.attr('href');
+
+		$.ajax({
+			url: href,
+			dataType: 'json',
+			beforeSend: function() {
+				t.css({'filter': 'grayscale(100%) contrast(90%)'});
+			},
+			complete: function() {
+				t.css({'filter': 'none'});
+			},
+			success: function(json) {
+				if (json.success) {
+					if (!json.next) t.hide();
+					else t.attr('href', json.next);
+
+					$('.main_catalog ul').append(json.products);
+			}},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});
+	});
+});

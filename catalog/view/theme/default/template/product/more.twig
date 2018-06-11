@@ -1,0 +1,40 @@
+{% if products %}
+{% for product in products %}
+<li>
+  <div class="wrapp">
+    {% if product.discount %}
+    <div class="discount">-{{ product.discount }}%</div>
+    {% endif %}
+    <div class="img"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}"></a></div>
+    <h3>{{ product.name }}</h3>
+    {% if product.attribute %}
+    <div class="hiden_block">
+      <p>Характеристики</p>
+      <div class="dropp">
+        <div>
+          {% for attribute_group in product.attribute %}
+          {% for attribute in attribute_group.attribute %}
+          <p>{{ attribute.name }}: {{ attribute.text }}</p>
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="prise row_flex">
+      {% if product.price %}
+      <div>
+        {% if not product.special %}
+        <strong>{{ product.price }}</strong>
+        {% else %}
+        <strong>{{ product.special }}</strong>
+        <s>{{ product.price }}</s>
+        {% endif %}
+      </div>
+      {% endif %}
+      <a href="#" onclick="event.preventDefault(); cart.add('{{ product.product_id }}');">{{ button_cart }}</a>
+    </div>
+  </div>
+</li>
+{% endfor %}
+{% endif %}

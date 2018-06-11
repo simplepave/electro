@@ -62,12 +62,12 @@ class ControllerStartupSeoUrl extends Controller {
 					$this->request->get['route'] = 'information/information';
 				}
 			}
-		  // Redirect 301	
+		  // Redirect 301
 		} elseif (isset($this->request->get['route']) && empty($this->request->post) && !isset($this->request->get['token']) && $this->config->get('config_seo_url')) {
 			$arg = '';
 			$cat_path = false;
 			if ($this->request->get['route'] == 'product/product' && isset($this->request->get['product_id'])) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = 'product_id=" . (int)$this->request->get['product_id'] . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");	
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = 'product_id=" . (int)$this->request->get['product_id'] . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				if ($query->num_rows && $query->row['keyword'] /**/ ) {
 					$this->request->get['route'] = 'product_id=' . $this->request->get['product_id'];
 				}
@@ -75,7 +75,7 @@ class ControllerStartupSeoUrl extends Controller {
 				$categorys_id = explode('_', $this->request->get['path']);
 				$cat_path = '';
 				foreach ($categorys_id as $category_id) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = 'category_id=" . (int)$category_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");	
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE `query` = 'category_id=" . (int)$category_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
 					if ($query->num_rows && $query->row['keyword'] /**/ ) {
 						$cat_path .= '/' . $query->row['keyword'];
 					} else {
@@ -96,7 +96,7 @@ class ControllerStartupSeoUrl extends Controller {
 			}
 
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE query = '" . $this->db->escape($this->request->get['route']) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
-			
+
 			if ($query->num_rows && $query->row['keyword']) /**/ {
 				$this->response->redirect($query->row['keyword'] . $arg, 301);
 			} elseif ($cat_path) {
