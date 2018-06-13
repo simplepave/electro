@@ -1,0 +1,70 @@
+<div class="filter">
+  <div class="wrapp">
+    {% if groups %}
+    {% for group in groups %}
+    {% set name = group.name|split('.', 2) %}
+    <div class="{{ name[0] }}">
+        <h3>{{ name[1] }}</h3>
+        {% if group.categories %}
+        <ul>
+          {% for category in group.categories %}
+          <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% if price %}
+    <div class="slider_prise">
+      <h3>Цена</h3>
+      <input type="text" id="range" value="" name="range" />
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% if price %}
+<script type="text/javascript"><!--
+$(function () {
+  $("#range").ionRangeSlider({
+    hide_min_max: true,
+    keyboard: true,
+    min: {{ price.min }},
+    max: {{ price.max }},
+    from: {{ price.min }},
+    to: {{ price.max }},
+    min_interval: 10,
+    type: 'double',
+    step: 1,
+    prefix: '{{ price.symbol_left }}',
+    postfix: '{{ price.symbol_right }}',
+    grid: false,
+    onFinish: function(price){
+      var sort = '&sort=p.price';
+      var href = '{{ url }}' + '&p_min=' + price.from + '&p_max=' + price.to + sort;
+
+      $.ajax({
+        url: href,
+        dataType: 'json',
+        success: function(json) {
+          if (json.success) {
+            if (!json.next) $('#more_product').hide();
+            else $('#more_product').show().attr('href', json.next.replace(/&amp;/g, "&"));
+
+            $('.main_catalog ul').html(json.products);
+        }},
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    }
+  });
+
+  var slider = $("#range").data("ionRangeSlider");
+  slider.update({
+    from: {{ price.min }},
+    to: {{ price.max }}
+  });
+});
+--></script>
+{% endif %}
