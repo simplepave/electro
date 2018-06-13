@@ -436,7 +436,7 @@ class ControllerProductCategory extends Controller {
 	}
 
 	/**
-	 * Next
+	 * More Product
 	 */
 
 	public function more()
@@ -455,7 +455,18 @@ class ControllerProductCategory extends Controller {
 			$page = $this->request->get['page'];
 		else $page = 1;
 
-		$sort = 'p.sort_order';
+		if (isset($this->request->get['sort']))
+			$sort = $this->request->get['sort'];
+		else $sort = 'p.sort_order';
+
+		if (isset($this->request->get['p_min']))
+			$p_min = $this->request->get['p_min'];
+		else $p_min = '';
+
+		if (isset($this->request->get['p_max']))
+			$p_max = $this->request->get['p_max'];
+		else $p_max = '';
+
 		$order = 'ASC';
 		$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit');
 
@@ -475,6 +486,8 @@ class ControllerProductCategory extends Controller {
 				'filter_category_id' => $category_id,
 				'filter_filter'      => $filter,
 				'sort'               => $sort,
+				'p_min'              => $p_min,
+				'p_max'              => $p_max,
 				'order'              => $order,
 				'start'              => ($page - 1) * $limit,
 				'limit'              => $limit
@@ -524,11 +537,20 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
+			$url = '';
+
+			if (isset($this->request->get['filter'])) $url .= '&filter=' . $this->request->get['filter'];
+			if (isset($this->request->get['sort']))   $url .= '&sort='   . $this->request->get['sort'];
+			if (isset($this->request->get['order']))  $url .= '&order='  . $this->request->get['order'];
+			if (isset($this->request->get['limit']))  $url .= '&limit='  . $this->request->get['limit'];
+			if (isset($this->request->get['p_min']))  $url .= '&p_min='  . $this->request->get['p_min'];
+			if (isset($this->request->get['p_max']))  $url .= '&p_max='  . $this->request->get['p_max'];
+
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
 			$pagination->page = $page;
 			$pagination->limit = $limit;
-			$pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . '&page={page}');
+			$pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url . '&page={page}');
 
 			$json['next'] = $pagination->render('next');
 			$json['products'] = $this->load->view('product/more', $data);

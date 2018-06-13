@@ -153,6 +153,9 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.manufacturer_id = '" . (int)$data['filter_manufacturer_id'] . "'";
 		}
 
+		if (isset($data['p_min'], $data['p_max']))
+			$sql .= " AND p.price >= ".$data['p_min'] . " AND p.price <= ".$data['p_max'];
+
 		$sql .= " GROUP BY p.product_id";
 
 		$sort_data = array(
@@ -274,17 +277,17 @@ class ModelCatalogProduct extends Model {
 
 	public function getPopularProducts($limit) {
 		$product_data = $this->cache->get('product.popular.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);
-	
+
 		if (!$product_data) {
 			$query = $this->db->query("SELECT p.product_id FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.viewed DESC, p.date_added DESC LIMIT " . (int)$limit);
-	
+
 			foreach ($query->rows as $result) {
 				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
 			}
-			
+
 			$this->cache->set('product.popular.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit, $product_data);
 		}
-		
+
 		return $product_data;
 	}
 
@@ -434,6 +437,9 @@ class ModelCatalogProduct extends Model {
 
 		$sql .= " LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
+		if (isset($data['p_min'], $data['p_max']))
+			$sql .= " AND p.price >= ".$data['p_min'] . " AND p.price <= ".$data['p_max'];
+
 		if (!empty($data['filter_category_id'])) {
 			if (!empty($data['filter_sub_category'])) {
 				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";
@@ -535,5 +541,17 @@ class ModelCatalogProduct extends Model {
 		} else {
 			return 0;
 		}
+	}
+
+	public function getProductsPrice($category_id)
+	{
+		$query = $this->db->query("SELECT MAX(p.`price`) as max, MIN(p.`price`) as min FROM " . DB_PREFIX . "product p, " . DB_PREFIX . "product_to_category p2c WHERE p2c.category_id='" . (int)$category_id . "' and  p2c.product_id = p.product_id");
+
+		if ($query->num_rows)
+			return [
+				'max' => $query->row['max'],
+				'min' => $query->row['min'],
+			];
+		else return 0;
 	}
 }

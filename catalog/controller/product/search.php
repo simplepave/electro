@@ -191,6 +191,13 @@ class ControllerProductSearch extends Controller {
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
 			foreach ($results as $result) {
+				$product_attribute = $this->model_catalog_product->getProductAttributes($result['product_id']);
+
+				if($product_attribute)
+					$attribute = $product_attribute;
+				else
+					$attribute = false;
+
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
 				} else {
@@ -205,8 +212,10 @@ class ControllerProductSearch extends Controller {
 
 				if ((float)$result['special']) {
 					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$discount = $result['price'] * (1.0 - (float)$result['special']/100.0);
 				} else {
 					$special = false;
+					$discount = false;
 				}
 
 				if ($this->config->get('config_tax')) {
@@ -228,6 +237,8 @@ class ControllerProductSearch extends Controller {
 					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+					'discount'    => $discount,
+					'attribute'   => $attribute,
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],

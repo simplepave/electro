@@ -968,9 +968,18 @@ nav ul li a {
 	padding:40px 45px;
 }
 
-.feedback .text-danger {
+.text-success {
+	color: green;
+	background:#fff;
+	font-weight: bold;
+	text-align: left !important;
+}
+
+.text-danger {
 	color: red;
 	background:#fff;
+	font-weight: bold;
+	text-align: left !important;
 }
 
 .feedback h2 {

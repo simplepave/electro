@@ -49,11 +49,11 @@
                 </div>
                 <div class="ask_question">
                   <h2>Задать вопрос</h2>
-                    <form>
-                      <input class="input" type="text" placeholder="Имя">
-                        <input class="input" type="tel" placeholder="Телефон">
-                        <textarea></textarea>
-                        <div><input class="submit" type="submit" value="Отправить"></div>
+                    <form class="question" action="{{ action_callout }}" method="post">
+                      <input name="name" class="input" type="text" placeholder="Имя" pattern=".{3,32}" required>
+                      <input name="telephone" class="input" type="text" placeholder="Телефон" pattern=".{3,32}" required>
+                      <textarea name='enquiry' required></textarea>
+                      <div><input class="submit" type="submit" value="Отправить"></div>
                     </form>
                 </div>
             </section>
@@ -61,11 +61,11 @@
         <div id="gotop"></div>
         <div id="call_back" class="call_back">
           <h3>Заказать звонок</h3>
-            <form>
-                <input type="text" placeholder="Ваше имя" required>
-              <input type="tel" placeholder="Ваш телефон" required>
-                <input type="submit" value="Заказать">
-            </form>
+          <form class="call_out" action="{{ action_callout }}" method="post">
+            <input name="name" type="text" placeholder="Ваше имя" pattern=".{3,32}" required>
+            <input name="telephone" type="text" placeholder="Ваш телефон" pattern=".{3,32}" required>
+            <input type="submit" value="Заказать">
+          </form>
         </div>
 <script type="text/javascript" src="catalog/view/javascript/js/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/js/main-slider.js"></script>
