@@ -1,0 +1,20 @@
+<div class="payment_methods simplecheckout-block" id="simplecheckout_payment" {{ hide ? 'data-hide="true"' : '' }} {{ display_error and has_error ? 'data-error="true"' : '' }}>
+    {% if display_header %}
+    <h2>{{ text_checkout_payment_method }}</h2>
+    {% endif %}
+    {% if payment_methods is not empty %}
+    <ul>
+        {% for payment_method in payment_methods %}
+        <li{% if payment_method['code'] == code %} class="active"{% endif %}>
+            <div class="row_flex">
+                <div><img src="/image/catalog/payment/{{ payment_method['code'] }}.jpg" alt=""></div>
+                <p>{{ payment_method['title'] }}</p>
+            </div>
+            <input onclick="event.stopPropagation()" type="radio" data-onchange="reloadAll" name="payment_method" value="{{ payment_method['code'] }}" {{ payment_method['dummy'] is not empty ? 'disabled="disabled"' : '' }} {{ payment_method['dummy'] is not empty ? 'data-dummy="true"' : '' }} id="{{ payment_method['code'] }}" {% if payment_method['code'] == code %}checked="checked"{% endif %} />
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="hidden" name="payment_method_current" value="{{ code }}" />
+    <input type="hidden" name="payment_method_checked" value="{{ checked_code }}" />
+    {% endif %}
+</div>

@@ -1,0 +1,12 @@
+<form>
+<div class="row_flex" id="simplecheckout_shipping_address" {{ hide ? 'data-hide="true"' : '' }} {{ display_error and has_error ? 'data-error="true"' : '' }}>
+    {% for row in rows %}
+      {{ row }}
+    {% endfor %}
+    {% for row in hidden_rows %}
+      {{ row }}
+    {% endfor %}
+</div>
+</form>
+
+

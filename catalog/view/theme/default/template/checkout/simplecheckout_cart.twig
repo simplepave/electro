@@ -1,0 +1,27 @@
+<div id="simplecheckout_cart" class="basket" {{ hide ? 'data-hide="true"' : '' }} {{ has_error ? 'data-error="true"' : '' }}>
+    <ul>
+        {% for product in products %}
+        <li>
+            <div class="img">
+                {% if product['thumb'] %}
+                <a href="{{ product['href'] }}"><img src="{{ product['thumb'] }}" alt="{{ product['name'] }}"></a>
+                {% endif %}
+            </div>
+            <h4>{{ product['name'] }}</h4>
+            <span class="quantity">
+                <a data-onclick="decreaseProductQuantity" href="#minus"></a>
+                <input class="form-control" type="text" data-onchange="changeProductQuantity" {{ quantity_step_as_minimum ? 'onfocus="$(this).blur()" data-minimum="' ~ product['minimum'] ~ '"' : '' }} name="quantity[{{ product['cart_id'] is not empty ? product['cart_id'] : product['key'] }}]" value="{{ product['quantity'] }}" size="1" />
+                <a data-onclick="increaseProductQuantity" href="#plus"></a>
+            </span>
+            <strong>{{ product['total'] }}</strong>
+            <a data-onclick="removeProduct" data-product-key="{{ product['cart_id'] is not empty ? product['cart_id'] : product['key'] }}" href="#"></a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% for total in totals %}
+    {% if total['code'] == 'total' %}
+    <p>{{ total['title'] }}: <span>{{ total['text'] }}</span></p>
+    {% endif %}
+    {% endfor %}
+    <input type="hidden" name="remove" value="" id="simplecheckout_remove">
+</div>

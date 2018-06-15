@@ -23,26 +23,10 @@ $(document).ready(function(){
 			$('body,html').animate({scrollTop:0},800);
 	});
 
-	$('a[href="#plus"]').click(function () {
-		var inp = $(this).parent('span').find('input');
-		inp.val(parseInt(inp.val())+1);
-		return false;
-	});
-	$('a[href="#minus"]').click(function () {
-		var inp = $(this).parent('span').find('input');
-		if(inp.val()>1) inp.val(parseInt(inp.val())-1);
-		return false;
-	});
-
 	$('ul.tabs').delegate('li:not(.current)', 'click', function() {
 		$(this).addClass('current').siblings().removeClass('current')
 			.parents('div.tabs_block').find('div.box').hide().eq($(this).index()).fadeIn(150);
 	})
-
-	$('.buy').on('click', function(){
-		$('div.basket_wrapp').toggleClass("active");
-		return false;
-	});
 
 });
 

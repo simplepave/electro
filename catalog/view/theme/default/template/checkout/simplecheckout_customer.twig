@@ -1,0 +1,10 @@
+{% if display_header %}
+<h2>{{ text_checkout_customer }}</h2>
+{% endif %}
+<form>
+<div class="row_flex" id="simplecheckout_customer" {{ hide ? 'data-hide="true"' : '' }} {{ display_error and has_error ? 'data-error="true"' : '' }}>
+{% for row in rows %}
+  {{ row }}
+{% endfor %}
+</div>
+</form>

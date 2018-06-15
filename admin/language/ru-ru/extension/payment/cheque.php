@@ -6,6 +6,7 @@ $_['heading_title']      = 'Оплата наличными';
 $_['text_extension']     = 'Расширения';
 $_['text_success']       = 'Настройки успешно изменены!';
 $_['text_edit']          = 'Редактирование';
+$_['text_cheque']		    = '<img src="view/image/payment/icon1.jpg" alt="Оплата наличными" />';
 
 // Entry
 $_['entry_payable']      = 'Получатель';

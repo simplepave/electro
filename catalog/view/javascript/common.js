@@ -156,7 +156,7 @@ $(document).on('click', 'button[data-dismiss=\'alert\']', function(){
  */
 
 $(document).ready(function() {
-	if(!$('#checkout-checkout').length && !$('#checkout-cart').length){
+	if(!$('#checkout-simplecheckout').length){
 		$.post('index.php?route=checkout/cart/in_cart', function(json){
 			if(json.count > 0){
 				setTimeout(function () {
@@ -527,7 +527,7 @@ $(document).delegate('.agree', 'click', function(e) {
 })(window.jQuery);
 
 /**
- * SP
+ * SimplePAVE
  */
 
 jQuery(document).ready(function($){
@@ -553,7 +553,7 @@ jQuery(document).ready(function($){
 			success: function(json) {
 				if (json.success) {
 					if (!json.next) t.hide();
-					else t.attr('href', json.next);
+					else t.attr('href', json.next.replace(/&amp;/g, "&"));
 
 					$('.main_catalog ul').append(json.products);
 			}},
@@ -597,4 +597,31 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+
+	/**
+	 * Simple Checkout
+	 */
+
+	$('#checkout-simplecheckout').on('click', '#simplecheckout_cart a', function(e){
+		e.preventDefault();
+	});
+
+	$('#checkout-simplecheckout').on('click', '#simplecheckout_shipping a', function(e){
+		e.preventDefault();
+		$(this).parent().find('input').trigger('click');
+	});
+
+	$('#checkout-simplecheckout').on('click', '#simplecheckout_payment li', function(e){
+		$(this).find('input').trigger('click');
+	});
+
+	/**
+	 *
+	 */
+
+	// $('.buy').on('click', function(){
+	// 	$('div.basket_wrapp').toggleClass("active");
+	// 	return false;
+	// });
+
 });

@@ -6,6 +6,7 @@ $_['heading_title']      = 'Оплата при доставке';
 $_['text_extension']     = 'Расширения';
 $_['text_success']       = 'Настройки успешно изменены!';
 $_['text_edit']          = 'Редактирование';
+$_['text_cod']		       = '<img src="view/image/payment/icon3.jpg" alt="Оплата при доставке" />';
 
 // Entry
 $_['entry_total']        = 'Нижняя граница';

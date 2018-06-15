@@ -1,0 +1,26 @@
+<div id="simplecheckout_shipping" class="delivery_method" {{ hide ? 'data-hide="true"' : '' }} {{ display_error and has_error ? 'data-error="true"' : '' }}>
+    {% if shipping_methods is not empty %}
+    {% if display_header %}
+    <h2>{{ text_checkout_shipping_method }}</h2>
+    {% endif %}
+    <ul>
+        {% for shipping_method in shipping_methods %}
+        {% if shipping_method['error'] is empty %}
+        {% for quote in shipping_method['quote'] %}
+        <li{% if quote['code'] == code %} class="active"{% endif %}>
+            <a href="#">
+                <div></div>
+                {% if shipping_method['title'] is not empty %}
+                <p>{{ shipping_method['title'] }}</p>
+                {% endif %}
+            </a>
+            <input type="radio" data-onchange="reloadAll" name="shipping_method" {{ quote['dummy'] is not empty ? 'disabled="disabled"' : '' }} {{ quote['dummy'] is not empty ? 'data-dummy="true"' : '' }} value="{{ quote['code'] }}" id="{{ quote['code'] }}" {% if quote['code'] == code %}checked="checked"{% endif %} />
+        </li>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <input type="hidden" name="shipping_method_current" value="{{ code }}" />
+    <input type="hidden" name="shipping_method_checked" value="{{ checked_code }}" />
+    {% endif %}
+</div>
