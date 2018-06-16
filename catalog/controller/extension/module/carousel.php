@@ -53,8 +53,8 @@ class ControllerExtensionModuleCarousel extends Controller {
 				if (isset($data['product_id']))
 					return $this->_product_id == $data['product_id']? true: false;
 			}
-			else
-				return $this->_product_id == $this->decode_url($url)? true: false;
+
+			return $this->_product_id == $this->decode_url($url)? true: false;
 		}
 
       return false;

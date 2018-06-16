@@ -848,6 +848,9 @@ nav ul li a {
     width: 100%;
     height: 100%;
 }
+.video-container.video-container-home {
+    padding-bottom: 78.9%;
+}
 
 .main_text {
 	position:relative;
