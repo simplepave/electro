@@ -53,8 +53,8 @@ class ModelNewsBlogArticle extends Model {
 			foreach ($data['article_related'] as $related_id) {
 				$this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$article_id . "' AND related_id = '" . (int)$related_id . "' AND type=1");
 				$this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$article_id . "', related_id = '" . (int)$related_id . "', type=1");
-				$this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$related_id . "' AND related_id = '" . (int)$article_id . "' AND type=1");
-				$this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$related_id . "', related_id = '" . (int)$article_id . "', type=1");
+				// $this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$related_id . "' AND related_id = '" . (int)$article_id . "' AND type=1");
+				// $this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$related_id . "', related_id = '" . (int)$article_id . "', type=1");
 			}
 		}
 
@@ -74,7 +74,7 @@ class ModelNewsBlogArticle extends Model {
 		}
 
 		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET query = 'newsblog_article_id=" . (int)$article_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET query = 'newsblog_article_id=" . (int)$article_id . "', language_id = '" . (int)$language_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
 		$this->cache->delete('article');
@@ -147,8 +147,8 @@ class ModelNewsBlogArticle extends Model {
 			foreach ($data['article_related'] as $related_id) {
 				$this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$article_id . "' AND related_id = '" . (int)$related_id . "' AND type=1");
 				$this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$article_id . "', related_id = '" . (int)$related_id . "', type=1");
-				$this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$related_id . "' AND related_id = '" . (int)$article_id . "' AND type=1");
-				$this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$related_id . "', related_id = '" . (int)$article_id . "', type=1");
+				// $this->db->query("DELETE FROM " . DB_PREFIX . "newsblog_article_related WHERE article_id = '" . (int)$related_id . "' AND related_id = '" . (int)$article_id . "' AND type=1");
+				// $this->db->query("INSERT INTO " . DB_PREFIX . "newsblog_article_related SET article_id = '" . (int)$related_id . "', related_id = '" . (int)$article_id . "', type=1");
 			}
 		}
 
@@ -172,7 +172,7 @@ class ModelNewsBlogArticle extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "seo_url WHERE query = 'newsblog_article_id=" . (int)$article_id . "'");
 
 		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET query = 'newsblog_article_id=" . (int)$article_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET query = 'newsblog_article_id=" . (int)$article_id . "', language_id = '" . (int)$language_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
 		$this->cache->delete('article');

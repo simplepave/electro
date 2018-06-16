@@ -348,7 +348,8 @@ class ControllerProductCategory extends Controller {
 			$pagination->total = $product_total;
 			$pagination->page = $page;
 			$pagination->limit = $limit;
-			$pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			// $pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			$pagination->url = 'index.php?route=product/category/more&path=' . $this->request->get['path'] . $url . '&page={page}';
 
 			$data['pagination'] = $pagination->render('next');
 
@@ -547,7 +548,8 @@ class ControllerProductCategory extends Controller {
 			$pagination->total = $product_total;
 			$pagination->page = $page;
 			$pagination->limit = $limit;
-			$pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			// $pagination->url = $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			$pagination->url = 'index.php?route=product/category/more&path=' . $this->request->get['path'] . $url . '&page={page}';
 
 			$json['next'] = $pagination->render('next');
 			$json['products'] = $this->load->view('product/more', $data);

@@ -40,8 +40,7 @@ $(function () {
     postfix: '{{ price.symbol_right }}',
     grid: false,
     onFinish: function(price){
-      var sort = '&sort=p.price';
-      var href = '{{ url }}' + '&p_min=' + price.from + '&p_max=' + price.to + sort;
+      var href = '{{ url }}' + '&p_min=' + price.from + '&p_max=' + price.to;
 
       $.ajax({
         url: href,

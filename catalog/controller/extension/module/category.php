@@ -124,13 +124,15 @@ class ControllerExtensionModuleCategory extends Controller {
 		$url = '';
 
 		if (isset($this->request->get['filter'])) $url .= '&filter=' . $this->request->get['filter'];
-		if (isset($this->request->get['sort']))   $url .= '&sort='   . $this->request->get['sort'];
 		if (isset($this->request->get['order']))  $url .= '&order='  . $this->request->get['order'];
 		if (isset($this->request->get['limit']))  $url .= '&limit='  . $this->request->get['limit'];
-		if (isset($this->request->get['p_min']))  $url .= '&p_min='  . $this->request->get['p_min'];
-		if (isset($this->request->get['p_max']))  $url .= '&p_max='  . $this->request->get['p_max'];
 
-		$url = str_replace('&amp;', '&', $this->url->link('product/category/more', 'path=' . $this->request->get['path'] . $url));
+		// if (isset($this->request->get['p_min']))  $url .= '&p_min='  . $this->request->get['p_min'];
+		// if (isset($this->request->get['p_max']))  $url .= '&p_max='  . $this->request->get['p_max'];
+		// if (isset($this->request->get['sort']))   $url .= '&sort='   . $this->request->get['sort'];
+		$url .= '&sort=p.price';
+
+		$url = str_replace('&amp;', '&', 'index.php?route=product/category/more&path=' . $this->request->get['path'] . $url);
 
 		$data['url'] = $url;
 
